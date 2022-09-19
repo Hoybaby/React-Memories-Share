@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config();
 
-import postRoutes from './routes/post.js';
+import postRoutes from './routes/posts.js';
 // before i had to import like const express = require('express');
 // in new version of node, i dont have to import it like this anymore
 
