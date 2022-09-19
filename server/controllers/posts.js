@@ -14,6 +14,21 @@ export const getPosts = async(req, res) => {
     
 }
 
-export const createPost = (req, res) => {
-    res.send('Post Creation')
+export const createPost = async(req, res) => {
+
+    //have no way to send a body to the backend because of the lack of frontend.
+    const post = req.body;
+    //takes the post which is req.body which will be assigned later and passing it as an object
+    //of the schema.
+    const newPost = new PostMessage(post);
+
+    try {
+        await newPost.save();
+
+        res.status(201).json(newPost);
+
+
+    } catch(error) {
+        res.status(409).json({message: error.message});
+    }
 }
