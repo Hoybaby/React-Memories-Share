@@ -1,6 +1,10 @@
 
 # React-Memories-Share
 
+
+## Process/Installation
+
+
 I first created two folders to handle the server side and client side. To make the react app client
 folder, you first have to open the terminal in that folder. Once in, the command needed to install
 is `npx create-react-app ./`. That command will create the app in the current directory. Next I,
@@ -12,9 +16,12 @@ express mongoose nodemon`. After the installation, you have to go to the package
 and add this line of code `"type" : "module",` which allows for a simplier import system to be used.
 Also we can remove the test scripts and add a start script for nodemon to fire the server.
 
+For the client side, I will mainly be using Material-Ui to handle the design aspect of the application.
+this will make designing easier to make and obtain. Other dependecies were installed such as 
+`moment redux react-google-login axios jwt-decode`.
 
 
-## Process/Installation
+
 ## Roadmap
 
 - Additional browser support
