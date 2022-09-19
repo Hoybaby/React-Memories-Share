@@ -26,6 +26,8 @@ BACK-END/SERVER
 
 In order to make sure my database connection is secure, I created a env file which is an enviromental variable. The environmental variable contains the information of my MONGODB connection which helps me store data later. Once the `env` file is created, I had to install a package into the server folder so the application can read from the `env` file properly. To install this package, the command is `npm install dotenv --save`. After installed, an import is required which is `import * as dotenv from 'dotenv` and then need to call it in the file as `dotenv.config();`.
 
+After the initial setup with the databases is done, I created folders to handle routing and how to handle the succesful route(the logic). These folders called routes and controllers will do as explained before.
+
 
 
 ## Roadmap
