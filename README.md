@@ -5,6 +5,8 @@
 ## Process/Installation
 
 
+FRONT END/CLIENT
+
 I first created two folders to handle the server side and client side. To make the react app client
 folder, you first have to open the terminal in that folder. Once in, the command needed to install
 is `npx create-react-app ./`. That command will create the app in the current directory. Next I,
@@ -19,6 +21,10 @@ Also we can remove the test scripts and add a start script for nodemon to fire t
 For the client side, I will mainly be using Material-Ui to handle the design aspect of the application.
 this will make designing easier to make and obtain. Other dependecies were installed such as 
 `moment redux react-google-login axios jwt-decode`.
+
+BACK-END/SERVER 
+
+In order to make sure my database connection is 
 
 
 
