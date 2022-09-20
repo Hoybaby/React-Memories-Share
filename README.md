@@ -24,6 +24,10 @@ this will make designing easier to make and obtain. Other dependecies were insta
 
 Every application needs a begining. I started out by creating some components which are `Form Posts Post`. The Post component will be used by the Posts components for reusability with the map function later. The form component is so we can try to post some data with the createPost function that I made in the backend. All the components have seperate styling which is making use of `material ui core styles`. This allows me to write the styles in a JavaScript file and just use dot notation with classes to call each style.
 
+After creating the basic structure, I decided to set up some react-redux to help with dispatching calls later. I did this by first importing the required imports which are `Provider` from `react-redux`, `configureStore, applyMiddleware, compose` from, `redux`. What is reducers some might ask? A reducer is a function that accepts a state and action. depending on the action, we will do some logic like creating/deleting a post.
+
+
+
 BACK-END/SERVER 
 
 In order to make sure my database connection is secure, I created a env file which is an enviromental variable. The environmental variable contains the information of my MONGODB connection which helps me store data later. Once the `env` file is created, I had to install a package into the server folder so the application can read from the `env` file properly. To install this package, the command is `npm install dotenv --save`. After installed, an import is required which is `import * as dotenv from 'dotenv` and then need to call it in the file as `dotenv.config();`.
