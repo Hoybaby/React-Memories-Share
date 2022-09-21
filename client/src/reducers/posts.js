@@ -7,7 +7,8 @@ import { CardActionArea } from "@material-ui/core"
 export default (posts= [], action) => {
     switch(action.type) {
         case 'FETCH_ALL':
-            return posts;
+            // the payload is the actual posts
+            return action.payload;
         case 'CREATE':
             return posts;
 

@@ -13,14 +13,14 @@ const app = express();
 
 // -----------ROUTES----------
 
-app.use('/posts', postRoutes)
+
 
 // applying a limit to make a max size for images
 app.use(bodyParser.json({limit: "30mb", extended: true}));
 // setting up boddy parses
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
-
+app.use('/posts', postRoutes)
 // console.log(process.env.TEST);
 
 //----------------DB-------------

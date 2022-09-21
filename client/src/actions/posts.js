@@ -4,13 +4,14 @@ import * as api from '../api';
 //these return actions
 //redux thunk allows us to specifiy another arror funtion
 //action is just a type which has a payload
-const getPosts = () => async(dispatch) => {
+export const getPosts = () => async(dispatch) => {
     try {
+        // we are getting the response and the data object. data represents the post
         const {data} = await api.fetchPosts();
-    } catch (error) {
-        
-    }
-    const action = {type: 'FETCH_ALL', payload: []}
 
-   dispatch(action);
+        //redux will dispatch an action from the data on the backend
+        dispatch({type: 'FETCH_ALL', payload: data});
+    } catch (error) {
+        console.log(error.message);
+    }
 }

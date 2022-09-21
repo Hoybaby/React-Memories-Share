@@ -26,6 +26,10 @@ Every application needs a begining. I started out by creating some components wh
 
 After creating the basic structure, I decided to set up some react-redux to help with dispatching calls later. I did this by first importing the required imports which are `Provider` from `react-redux`, `configureStore, applyMiddleware, compose` from, `redux`. What is reducers some might ask? A reducer is a function that accepts a state and action. depending on the action, we will do some logic like creating/deleting a post.
 
+Actions/Reducers/Thunk
+
+In the actions folder, I must import the getPosts call from axios to retrieve the information from my server. This information will be sent to the reducer which will have an action/payload. Once this action gets dispatched, which we are doing with the useEffect found in App.js, it will immediately go to the post reducer in the reducer folder to handle the logic in fetchings all the posts.
+
 
 
 BACK-END/SERVER 

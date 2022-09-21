@@ -1,9 +1,9 @@
 
 import React from 'react';
-// import useStyles from './styles';
+import useStyles from './styles';
 
 const Post = () => {
-    // const classes = useStyles();
+    const classes = useStyles();
     return(
         <h1>Singular POST</h1>
     )
