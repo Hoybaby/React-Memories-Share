@@ -28,7 +28,8 @@ After creating the basic structure, I decided to set up some react-redux to help
 
 Actions/Reducers/Thunk
 
-In the actions folder, I must import the getPosts call from axios to retrieve the information from my server. This information will be sent to the reducer which will have an action/payload. Once this action gets dispatched, which we are doing with the useEffect found in App.js, it will immediately go to the post reducer in the reducer folder to handle the logic in fetchings all the posts.
+In the actions folder, I must import the getPosts call from axios to retrieve the information from my server. This information will be sent to the reducer which will have an action/payload. Once this action gets dispatched, which we are doing with the useEffect found in App.js, it will immediately go to the post reducer in the reducer folder to handle the logic in fetchings all the posts. Added code in the getPosts to handle the logic and the type of dispatch. the code work similar to like this. The app.js is using a useEffect which means on change of dispatch, getPosts from actions which is making a call to 
+fetch allPosts.
 
 
 
