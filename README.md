@@ -26,15 +26,15 @@ Every application needs a begining. I started out by creating some components wh
 
 After creating the basic structure, I decided to set up some react-redux to help with dispatching calls later. I did this by first importing the required imports which are `Provider` from `react-redux`, `configureStore, applyMiddleware, compose` from, `redux`. What is reducers some might ask? A reducer is a function that accepts a state and action. depending on the action, we will do some logic like creating/deleting a post.
 
-    Actions/Reducers/Thunk
+    ----Actions/Reducers/Thunk-----
 
 In the actions folder, I must import the getPosts call from axios to retrieve the information from my server. This information will be sent to the reducer which will have an action/payload. Once this action gets dispatched, which we are doing with the useEffect found in App.js, it will immediately go to the post reducer in the reducer folder to handle the logic in fetchings all the posts. Added code in the getPosts to handle the logic and the type of dispatch. the code work similar to like this. The app.js is using a useEffect which means on change of dispatch, getPosts from actions which is making a call to 
 fetch allPosts.
 
-    --Form Component--
+   -----Form Component-----
 How will we change the value on the state field with the onChange?
 We can use a certain syntax in the onChange attribute in the TextField. that syntax is
-`onChange={(e) => setPostData({...postData, creator: e.target.value})}`. I had to spread the data because if I did the same method without, it wouldnt PERSIST the changes and constantly keep changing.
+`onChange={(e) => setPostData({...postData, creator: e.target.value})}`. I had to spread the data because if I did the same method without, it wouldnt PERSIST the changes and constantly keep changing. After the fields are done , I have to create the functionality of the submit to dispatch action which contains a payload to the reducer. I have done everything so far properly and it does send to the back end.
 
 
 
