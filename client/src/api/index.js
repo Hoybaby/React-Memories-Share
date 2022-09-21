@@ -4,3 +4,5 @@ const url = 'http://localhost:5000/posts';
 
 // we are going to dispatch all our actions. 
 export const fetchPosts =() => axios.get(url);
+
+export const createPosts =(newPost) =>axios.post(url, newPost);
