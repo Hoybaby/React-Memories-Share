@@ -8,7 +8,7 @@ import moment from 'moment';
 import useStyles from './styles';
 
 // destructured the props below
-const Post = ({post}) => {
+const Post = ({post, setCurrentId}) => {
     const classes = useStyles();
     return(
         <Card className={classes.card}>

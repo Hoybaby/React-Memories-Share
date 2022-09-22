@@ -43,7 +43,7 @@ We can use a certain syntax in the onChange attribute in the TextField. that syn
 The singular Post component would be created from cards that I will import from Material-Ui. Everything will be contained within a card which will have an image, title description, created from x and buttons to like/delete the card. This is purely front end so a lot of trial and error as well as some online help from JavaScript Mastery made it possible to be done.These buttons will have onClick functions later. For the tags, I had to create a map because the tags is an array of inputs which will get cycles through from when the user types it out.
 
 -----Updating a Post with ID------
-In order to update a post, we must keep track of this ID throughout the components. The best way is to establish the ID in the App.js so it can be passed to the child components at a later time. To do this, we will do a `useState` hook.
+In order to update a post, we must keep track of this ID throughout the components. The best way is to establish the ID in the App.js so it can be passed to the child components at a later time. To do this, we will do a `useState` hook. I have to use the state and state setters in the components which will be used as props later.
 
 
 
