@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 // import './App.css';
 import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core';
 import {useDispatch} from 'react-redux';
@@ -12,6 +12,8 @@ import './index.css';
 
 
 const App= () => {
+
+  const [currentId, setCurrentId] = useState(null);
   const classes= useStyles();
   const dispatch = useDispatch();
 
@@ -30,10 +32,11 @@ const App= () => {
           <Grid container justifyContent="space-between" alignItems="stretch" spacing={3}>
             {/* this means that XS small screens will take up whole page */}
             <Grid item xs={12} sm={7}>
-              <Posts/>
+              {/* this will make the setter avaiable in the Posts to use. Like Inheritance */}
+              <Posts setCurrentId={setCurrentId}/>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Form/>
+              <Form currentId={currentId} setCurrentId={setCurrentId}/>
             </Grid>
           </Grid>
         </Container>

@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import PostMessage from "../models/postMessage.js";
 
 export const getPosts = async(req, res) => {
@@ -31,4 +32,20 @@ export const createPost = async(req, res) => {
     } catch(error) {
         res.status(409).json({message: error.message});
     }
+}
+
+export const updatePost = async(req,res) => {
+
+    //this is extracting the id from req.params. called object destructing.
+    const {id: _id} = req.params;
+
+    //will be sent from the front ne
+    const post = req.body;
+
+    //have to check if the ID is valid. just like i would and throw and error in java
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No post with that id');
+
+    const updatedPost = await PostMessage.findByIdAndUpdate(_id, post, {new: true});
+
+    res.json(updatedPost);
 }

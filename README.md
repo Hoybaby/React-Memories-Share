@@ -37,8 +37,15 @@ We can use a certain syntax in the onChange attribute in the TextField. that syn
 `onChange={(e) => setPostData({...postData, creator: e.target.value})}`. I had to spread the data because if I did the same method without, it wouldnt PERSIST the changes and constantly keep changing. After the fields are done , I have to create the functionality of the submit to dispatch action which contains a payload to the reducer. I have done everything so far properly and it does send to the back end.
 
 
+
+
 -----Post Component-----
 The singular Post component would be created from cards that I will import from Material-Ui. Everything will be contained within a card which will have an image, title description, created from x and buttons to like/delete the card. This is purely front end so a lot of trial and error as well as some online help from JavaScript Mastery made it possible to be done.These buttons will have onClick functions later. For the tags, I had to create a map because the tags is an array of inputs which will get cycles through from when the user types it out.
+
+-----Updating a Post with ID------
+In order to update a post, we must keep track of this ID throughout the components. The best way is to establish the ID in the App.js so it can be passed to the child components at a later time. To do this, we will do a `useState` hook.
+
+
 
 
 
@@ -48,6 +55,7 @@ In order to make sure my database connection is secure, I created a env file whi
 
 After the initial setup with the databases is done, I created folders to handle routing and how to handle the succesful route(the logic). These folders called routes and controllers will do as explained before. In the controllers, I created a simple try and catch block to handle the errors of the logic of the `getPosts`. If it succeeds at this point, it will create an array on the endpoint. I have to make this function of getPosts async because it can take some time to find a specific message and dont want to hold up the rest of the application for searching. Next I added more information on the `createPost` function .This function behaves like an async function as well for productability. The `creatPost` function must have a req.body which is going to be data from the user. Currently a form hasn't been created yet from the front-end which will be done soon. This form will be applied to the schema to give it form to allow it to enter the database.
 
+After having a two of the CRUD operations already in place, I wanted to create an update function which would be `updatePost`. I would need to retrieve the ID from the mongoose database which I need to check if the ID is valid or in the database. TO do this I will use an if statement with a find method. If it is not there, it will return a status error with a message otherwise a new variable will be created with that PostMessage model. Then it will response be a json of that `updatedPost`;
 
 
 ## Roadmap

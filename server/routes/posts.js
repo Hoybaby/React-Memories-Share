@@ -1,5 +1,5 @@
 import express from 'express';
-import {getPosts, createPost} from '../controllers/posts.js'
+import {getPosts, createPost, updatePost} from '../controllers/posts.js'
 
 const router = express.Router();
 
@@ -7,6 +7,8 @@ const router = express.Router();
 // this wont be called with localhost:5000/, because i changed how it is called in index.js
 router.get('/', getPosts);
 
-router.post('/', createPost)
+router.post('/', createPost);
+
+router.patch('/:id', updatePost);
 
 export default router;
