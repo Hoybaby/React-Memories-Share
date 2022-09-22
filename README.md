@@ -37,6 +37,10 @@ We can use a certain syntax in the onChange attribute in the TextField. that syn
 `onChange={(e) => setPostData({...postData, creator: e.target.value})}`. I had to spread the data because if I did the same method without, it wouldnt PERSIST the changes and constantly keep changing. After the fields are done , I have to create the functionality of the submit to dispatch action which contains a payload to the reducer. I have done everything so far properly and it does send to the back end.
 
 
+-----Post Component-----
+The singular Post component would be created from cards that I will import from Material-Ui. Everything will be contained within a card which will have an image, title description, created from x and buttons to like/delete the card. This is purely front end so a lot of trial and error as well as some online help from JavaScript Mastery made it possible to be done.These buttons will have onClick functions later. For the tags, I had to create a map because the tags is an array of inputs which will get cycles through from when the user types it out.
+
+
 
 BACK-END/SERVER 
 

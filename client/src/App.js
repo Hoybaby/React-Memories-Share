@@ -8,6 +8,7 @@ import {getPosts} from './actions/posts';
 import Form from './components/Form/Form';
 import Posts from './components/Posts/Posts';
 import useStyles from './styles';
+import './index.css';
 
 
 const App= () => {
