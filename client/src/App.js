@@ -29,7 +29,7 @@ const App= () => {
       </AppBar>
       <Grow in>
         <Container>
-          <Grid container justifyContent="space-between" alignItems="stretch" spacing={3}>
+          <Grid  className={classes.mainContainer} container justifyContent="space-between" alignItems="stretch" spacing={3}>
             {/* this means that XS small screens will take up whole page */}
             <Grid item xs={12} sm={7}>
               {/* this will make the setter avaiable in the Posts to use. Like Inheritance */}
