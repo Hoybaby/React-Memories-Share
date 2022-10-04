@@ -58,6 +58,11 @@ After the initial setup with the databases is done, I created folders to handle 
 After having a two of the CRUD operations already in place, I wanted to create an update function which would be `updatePost`. I would need to retrieve the ID from the mongoose database which I need to check if the ID is valid or in the database. TO do this I will use an if statement with a find method. If it is not there, it will return a status error with a message otherwise a new variable will be created with that PostMessage model. Then it will response be a json of that `updatedPost`;
 
 
+-----Navbar------
+
+I wanted to make the Navbar feature that I created early to be in its seperate component. I cut and pasted the code into a new folder style so it can be organized and clean. I added a little different styles which at first created some issues because I wasn't importing the styles correctly. The navbar will hold features for the JWT that will be created for authorization. For the title, I used a `component={Link}` to redirect the user to the homepage when we make a form for a login. Every Link needs to have a `to=''`.
+
+
 ## Roadmap
 
 - Additional browser support
