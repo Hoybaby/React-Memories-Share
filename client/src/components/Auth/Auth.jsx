@@ -9,7 +9,11 @@ const Auth = () => {
     const isSignup = false;
 
     const handleSubmit = () => {
-      
+
+    }
+
+    const handleChange =() => {
+
     }
     
   return (
@@ -18,9 +22,18 @@ const Auth = () => {
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon/>
         </Avatar>
+        {/* if isSignup is true which means user is in and will show Sign in */}
         <Typography variant='h5'>{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
-
+            <Grid container spacing={2}>
+              {
+                isSignup && (
+                  <>
+                    <TextField name="firstName" label="First Name" handleChange={handleChange} autoFocus xs={6}></TextField>
+                  </>
+                )
+              }
+            </Grid>
         </form>
 
       </Paper>
