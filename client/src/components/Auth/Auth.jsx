@@ -3,6 +3,11 @@ import { Avatar, Button, Paper, Grid, Typography, Container} from '@material-ui/
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import useStyles from './styles';
 import Input from './Input';
+import {GoogleOAuthProvider} from '@react-oauth/google';
+import {GoogleLogin, googleLogout} from '@react-oauth/google';
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 
 const Auth = () => {
     const classes = useStyles();
@@ -31,8 +36,13 @@ const Auth = () => {
       handleShowPassword(false);
     }
     
+    console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID)
+    // console.log("test");
+    // console.log(process.env.REACT_APP_TEST);
+    
   return (
-    <Container component="main" maxWidth="xs">
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+      <Container component="main" maxWidth="xs">
       <Paper className={classes.paper} elevation={3}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon/>
@@ -66,6 +76,11 @@ const Auth = () => {
 
                 {isSignup ? ' Sign up' : "Sign in"}
             </Button>
+            <GoogleLogin
+              onSuccess={(response) => console.log(response)}
+            />
+            {/* {process.env.REACT_APP_TEST} */}
+
             <Grid container justifyContent='flex-end'>
               <Grid item>
                   <Button onClick={switchMode}> 
@@ -78,6 +93,8 @@ const Auth = () => {
 
       </Paper>
     </Container>
+    </GoogleOAuthProvider>
+    
 
   )
 }

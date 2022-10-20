@@ -5,6 +5,10 @@ import { useDispatch } from 'react-redux';
 import { getPosts } from '../../actions/posts';
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
+import {GoogleOAuthProvider} from '@react-oauth/google';
+// import * as dotenv from 'dotenv';
+// dotenv.config();
+
 // import useStyles from './styles';
 
 const Home = () => {
@@ -18,7 +22,8 @@ const Home = () => {
     }, [currentId, dispatch]);
   
   return (
-    <Grow in>
+    <GoogleOAuthProvider clientId={`${process.env.GOOGLE_CLIENT_ID}`}>
+      <Grow in>
         <Container>
           <Grid  container justifyContent="space-between" alignItems="stretch" spacing={3}>
             {/* this means that XS small screens will take up whole page */}
@@ -32,6 +37,8 @@ const Home = () => {
           </Grid>
         </Container>
       </Grow>
+    </GoogleOAuthProvider>
+    
   )
 }
 
