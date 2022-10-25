@@ -6,14 +6,16 @@ import Input from './Input';
 import {GoogleOAuthProvider} from '@react-oauth/google';
 import {GoogleLogin, googleLogout} from '@react-oauth/google';
 import * as dotenv from 'dotenv';
+import { useDispatch} from 'react-redux';
+import jwt_decode from 'jwt-decode';
 dotenv.config();
 
 
 const Auth = () => {
     const classes = useStyles();
-
     const [showPassword,setShowPassword] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
+    const dispatch = useDispatch();
 
     // const isSignup = true;
 
@@ -39,6 +41,33 @@ const Auth = () => {
     console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID)
     // console.log("test");
     // console.log(process.env.REACT_APP_TEST);
+
+    const googleSuccess = async (res) => {
+      const result = jwt_decode(res?.credential);
+
+      const token = res.credential;
+
+      // //destructuring
+      // const {name, picture, sub} = decoded;
+
+      // const user = {
+      //   _id: sub,
+      //   _type: 'user',
+      //   userName: name
+      // }
+
+      // await axios.post(`http://localhostL3000/api/auth`, user);
+
+      // console.log(decoded);
+
+      try {
+        dispatch({type: 'AUTH', data: {result, token}});
+      } catch(error) {
+        console.log(error);
+      }
+
+      // console.log(decoded);
+    }
     
   return (
     <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
@@ -77,7 +106,7 @@ const Auth = () => {
                 {isSignup ? ' Sign up' : "Sign in"}
             </Button>
             <GoogleLogin
-              onSuccess={(response) => console.log(response)}
+              onSuccess={googleSuccess}
             />
             {/* {process.env.REACT_APP_TEST} */}
 
