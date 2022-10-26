@@ -1,6 +1,8 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect } from 'react';
 import { AppBar, Typography, Toolbar, Button, Avatar } from '@material-ui/core';
 import  {Link} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {useHistory} from 'react-router-dom';
 
 import useStyles from './styles';
 import memories from '../../images/memories.png';
@@ -10,17 +12,32 @@ import memories from '../../images/memories.png';
 
 const Navbar = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-    console.log("testing if user pops up below");
-    console.log(user);
+    // console.log("testing if user pops up below");
+    // console.log(user);
 
-    useEffet(() => {
-        const token = user?.token;
+    // useEffect(() => {
+    //     const token = user?.token;
 
-        //going to check JWT for later
-        setUser(JSON.parse(localStorage.getItem('profile')));
-    }, [])
+    //     //going to check JWT for later
+    //     setUser(JSON.parse(localStorage.getItem('profile')));
+    // }, []);
+
+
+    const logout =() => {
+        try {
+            dispatch({type: 'LOGOUT'});
+            history.push('/');
+
+            //user will be null after logout.
+            setUser(null);
+        } catch (error) {
+            
+        }
+    }
 
     //mock user for later
     // useEffect will happen and occur when something changes it will relaunch component
@@ -36,7 +53,7 @@ const Navbar = () => {
                 <div className={classes.profile}>
                     <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>   
                     <Typography className={classes.userName} variant="h6"> {user.result.name}</Typography>
-                    <Button variant="contained" className={classes.logout} color="secondary">Log Out</Button>
+                    <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Log Out</Button>
                 </div>
             ): (
                 <Button component={Link} to='/auth' variant="contained" color="primary"> Sign In</Button>
