@@ -45,7 +45,13 @@ The singular Post component would be created from cards that I will import from 
 -----Updating a Post with ID------
 In order to update a post, we must keep track of this ID throughout the components. The best way is to establish the ID in the App.js so it can be passed to the child components at a later time. To do this, we will do a `useState` hook. I have to use the state and state setters in the components which will be used as props later.
 
+-----Navbar------
 
+I wanted to make the Navbar feature that I created early to be in its seperate component. I cut and pasted the code into a new folder style so it can be organized and clean. I added a little different styles which at first created some issues because I wasn't importing the styles correctly. The navbar will hold features for the JWT that will be created for authorization. For the title, I used a `component={Link}` to redirect the user to the homepage when we make a form for a login. Every Link needs to have a `to=''`. The navbar has been set up with conditional statements so that it looks a certain way if there is a user or no user at all. The information that will get displayed will come from localStorage to hold the name.
+
+
+-----AUTH-----
+The auth component is the form handling portion of the application. Using Material-Ui I created a functional form that has mutiple fields that will be set to localStorage at a later time. The form took a little while to get right with spacing and functions. I wanted users to have the option to check if their password is the same and not hidden which is easily down by using a onClick functions with an icon that checks the prevState and flips the state which then passes onto the application. I have made applications before and using the google sign in package became different. I had to wrap the whole component with `GoogleOAuthProvider` from `@react-oauth/google`. It is important to install this package to get it to run properly. TO make use of this information, the dispatch method I created earlier with AUTH will set the information into a 'profile' that can be found in localStorage. This allows the page to fetch the data and understand that a user is logged in.
 
 
 
@@ -58,9 +64,7 @@ After the initial setup with the databases is done, I created folders to handle 
 After having a two of the CRUD operations already in place, I wanted to create an update function which would be `updatePost`. I would need to retrieve the ID from the mongoose database which I need to check if the ID is valid or in the database. TO do this I will use an if statement with a find method. If it is not there, it will return a status error with a message otherwise a new variable will be created with that PostMessage model. Then it will response be a json of that `updatedPost`;
 
 
------Navbar------
 
-I wanted to make the Navbar feature that I created early to be in its seperate component. I cut and pasted the code into a new folder style so it can be organized and clean. I added a little different styles which at first created some issues because I wasn't importing the styles correctly. The navbar will hold features for the JWT that will be created for authorization. For the title, I used a `component={Link}` to redirect the user to the homepage when we make a form for a login. Every Link needs to have a `to=''`.
 
 
 ## Roadmap

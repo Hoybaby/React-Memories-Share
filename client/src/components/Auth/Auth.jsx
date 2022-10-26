@@ -8,7 +8,9 @@ import {GoogleLogin, googleLogout} from '@react-oauth/google';
 import * as dotenv from 'dotenv';
 import { useDispatch} from 'react-redux';
 import jwt_decode from 'jwt-decode';
+import {useHistory} from 'react-router-dom';
 dotenv.config();
+
 
 
 const Auth = () => {
@@ -16,6 +18,7 @@ const Auth = () => {
     const [showPassword,setShowPassword] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     // const isSignup = true;
 
@@ -38,7 +41,7 @@ const Auth = () => {
       handleShowPassword(false);
     }
     
-    console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID)
+    // console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID)
     // console.log("test");
     // console.log(process.env.REACT_APP_TEST);
 
@@ -62,6 +65,8 @@ const Auth = () => {
 
       try {
         dispatch({type: 'AUTH', data: {result, token}});
+        //want to redirect to home so will use history
+        history.push('/');
       } catch(error) {
         console.log(error);
       }

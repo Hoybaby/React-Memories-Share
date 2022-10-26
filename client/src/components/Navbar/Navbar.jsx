@@ -15,7 +15,15 @@ const Navbar = () => {
     console.log("testing if user pops up below");
     console.log(user);
 
+    useEffet(() => {
+        const token = user?.token;
+
+        //going to check JWT for later
+        setUser(JSON.parse(localStorage.getItem('profile')));
+    }, [])
+
     //mock user for later
+    // useEffect will happen and occur when something changes it will relaunch component
     
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
