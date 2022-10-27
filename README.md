@@ -53,6 +53,8 @@ I wanted to make the Navbar feature that I created early to be in its seperate c
 -----AUTH-----
 The auth component is the form handling portion of the application. Using Material-Ui I created a functional form that has mutiple fields that will be set to localStorage at a later time. The form took a little while to get right with spacing and functions. I wanted users to have the option to check if their password is the same and not hidden which is easily down by using a onClick functions with an icon that checks the prevState and flips the state which then passes onto the application. I have made applications before and using the google sign in package became different. I had to wrap the whole component with `GoogleOAuthProvider` from `@react-oauth/google`. It is important to install this package to get it to run properly. TO make use of this information, the dispatch method I created earlier with AUTH will set the information into a 'profile' that can be found in localStorage. This allows the page to fetch the data and understand that a user is logged in.
 
+In order for a user to log out, they have to press the button logout. The logout wasn't working at first because I didn't set up a onClick function. To create the log out is very simple because all that is needed is to remove the user. In order to remove the user, you have to set the localStorage to null which is done with `localStorage.clear();` I did this an a reducer to handle the logic elsewhere. The `useEffect` is mean to refresh the navbar when the variable `location` from react-router-dom changes. 
+
 
 
 BACK-END/SERVER 

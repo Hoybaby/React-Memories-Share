@@ -4,19 +4,20 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import useStyles from './styles';
 import Input from './Input';
 import {GoogleOAuthProvider} from '@react-oauth/google';
-import {GoogleLogin, googleLogout} from '@react-oauth/google';
+import {GoogleLogin} from '@react-oauth/google';
 import * as dotenv from 'dotenv';
 import { useDispatch} from 'react-redux';
 import jwt_decode from 'jwt-decode';
 import {useHistory} from 'react-router-dom';
 dotenv.config();
 
-
+const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
 
 const Auth = () => {
     const classes = useStyles();
     const [showPassword,setShowPassword] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
+    const [formData, setFormData] = useState(initialState);
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -28,12 +29,14 @@ const Auth = () => {
       setShowPassword((prevShowPassword)=> !prevShowPassword);
     }
 
-    const handleSubmit = () => {
-
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(formData);
     }
 
-    const handleChange =() => {
-
+    const handleChange =(e) => {
+      //this will make sure to spread to properties but only change the one we are on.
+      setFormData({...formData, [e.target.name]: e.target.value})
     }
 
     const switchMode =() => {
@@ -50,19 +53,6 @@ const Auth = () => {
 
       const token = res.credential;
 
-      // //destructuring
-      // const {name, picture, sub} = decoded;
-
-      // const user = {
-      //   _id: sub,
-      //   _type: 'user',
-      //   userName: name
-      // }
-
-      // await axios.post(`http://localhostL3000/api/auth`, user);
-
-      // console.log(decoded);
-
       try {
         dispatch({type: 'AUTH', data: {result, token}});
         //want to redirect to home so will use history
@@ -71,7 +61,7 @@ const Auth = () => {
         console.log(error);
       }
 
-      // console.log(decoded);
+      
     }
     
   return (
@@ -88,13 +78,9 @@ const Auth = () => {
               {
                 isSignup && (
                   <>
-                  
                     <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half/>
-                  
-                  
+      
                     <Input name="lastName" label="Last Name" handleChange={handleChange} half />
-                  
-                    
                   </>
                 )
               }
@@ -102,12 +88,10 @@ const Auth = () => {
               <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"}
               handleShowPassword={handleShowPassword}
               />
-
               {isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password"/>}
             </Grid>
             {/* making it with conditional for user input */}
             <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
-
                 {isSignup ? ' Sign up' : "Sign in"}
             </Button>
             <GoogleLogin

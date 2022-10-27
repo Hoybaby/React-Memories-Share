@@ -2,7 +2,7 @@ import React,{useState, useEffect } from 'react';
 import { AppBar, Typography, Toolbar, Button, Avatar } from '@material-ui/core';
 import  {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import {useHistory, useLocation} from 'react-router-dom';
 
 import useStyles from './styles';
 import memories from '../../images/memories.png';
@@ -14,17 +14,19 @@ const Navbar = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();
+    const location = useLocation();
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     // console.log("testing if user pops up below");
     // console.log(user);
 
-    // useEffect(() => {
-    //     const token = user?.token;
+    useEffect(() => {
+        const token = user?.token;
 
-    //     //going to check JWT for later
-    //     setUser(JSON.parse(localStorage.getItem('profile')));
-    // }, []);
+        //going to check JWT for later
+        setUser(JSON.parse(localStorage.getItem('profile')));
+        //when location changes it will change as well
+    }, [location]);
 
 
     const logout =() => {
