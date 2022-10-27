@@ -9,6 +9,7 @@ import * as dotenv from 'dotenv';
 import { useDispatch} from 'react-redux';
 import jwt_decode from 'jwt-decode';
 import {useHistory} from 'react-router-dom';
+import {signin, sigup} from '../../actions/auth';
 dotenv.config();
 
 const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
@@ -31,6 +32,13 @@ const Auth = () => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
+
+      if(isSignup) {
+        // passing the history so we can naviagate if something happens
+        dispatch(signup(formData, history));
+      } else {
+        dispatch(signin(formData, history));
+      }
       console.log(formData);
     }
 
