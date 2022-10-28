@@ -13,7 +13,7 @@ export const signin = (formData, history) => async(dispatch)=> {
 
 export const signup = (formData, history) => async(dispatch)=> {
     try {
-        // logs in the user 
+        // signup  the user 
 
         history.push('/');
     } catch(error){

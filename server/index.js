@@ -6,6 +6,7 @@ import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-d
 dotenv.config();
 
 import postRoutes from './routes/posts.js';
+import userRoutes from './routes/users.js';
 // before i had to import like const express = require('express');
 // in new version of node, i dont have to import it like this anymore
 
@@ -21,6 +22,7 @@ app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 app.use('/posts', postRoutes)
+app.use('/user', userRoutes);
 // console.log(process.env.TEST);
 
 //----------------DB-------------
