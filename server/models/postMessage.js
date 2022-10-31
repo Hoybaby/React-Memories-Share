@@ -7,9 +7,9 @@ const postSchema = mongoose.Schema({
     tags: [String],
     selectedFile: String,
     //reason why it is an object is so we can set a default.
-    likeCount: {
-        type: Number,
-        default: 0
+    likes: {
+        type: [String],
+        default: [],
     },
     created: {
         type: Date,

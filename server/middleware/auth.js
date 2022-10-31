@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, {decode} from 'jsonwebtoken';
 
 //next is do something and do the next thing
 const auth = async (req,res, next) => {
@@ -19,7 +19,13 @@ const auth = async (req,res, next) => {
 
             req.userId = decodedData?.sub;
         }
+
+        //if a user wanted to like a post
+        //needs to make sure he has the authority to like it
+        next();
     } catch (error) {
         console.log(error);
     }
 }
+
+export default auth;

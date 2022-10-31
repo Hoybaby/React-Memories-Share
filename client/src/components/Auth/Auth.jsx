@@ -9,7 +9,7 @@ import * as dotenv from 'dotenv';
 import { useDispatch} from 'react-redux';
 import jwt_decode from 'jwt-decode';
 import {useHistory} from 'react-router-dom';
-import {signin, sigup} from '../../actions/auth';
+import {signin, signup} from '../../actions/auth';
 dotenv.config();
 
 const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
