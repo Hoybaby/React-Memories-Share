@@ -49,7 +49,7 @@ const Auth = () => {
 
     const switchMode =() => {
       setIsSignup((prevIsSignup) => !prevIsSignup);
-      handleShowPassword(false);
+      setShowPassword(false);
     }
     
     // console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID)

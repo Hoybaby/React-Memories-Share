@@ -5,27 +5,24 @@ const auth = async (req,res, next) => {
 
     try {
         const token = req.headers.authorization.split(" ")[1];
-
-        const isCustomAuth = token.length <500;
-
+        const isCustomAuth = token.length < 500;
+    
         let decodedData;
-
-        if(token && isCustomAuth) {
-            decodedData = jwt.verify(token, process.env.SECRET);
-
-            req.userId = decodedData?.id;
+    
+        if (token && isCustomAuth) {      
+          decodedData = jwt.verify(token, process.env.SECRET);
+    
+          req.userId = decodedData?.id;
         } else {
-            decodedData = jwt.decode(token);
-
-            req.userId = decodedData?.sub;
-        }
-
-        //if a user wanted to like a post
-        //needs to make sure he has the authority to like it
+          decodedData = jwt.decode(token);
+    
+          req.userId = decodedData?.sub;
+        }    
+    
         next();
-    } catch (error) {
+      } catch (error) {
         console.log(error);
-    }
+      }
 }
 
 export default auth;

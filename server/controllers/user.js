@@ -1,6 +1,6 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import user from '../models/user.js';
+// import User from '../models/user.js';
 
 import User from '../models/user.js';
 import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
@@ -12,7 +12,7 @@ export const signin =async(req,res) => {
     const { email, password} = req.body;
 
     try {
-        const existingUser = await user.findOne({email});
+        const existingUser = await User.findOne({email});
 
         if(!existingUser) return res.status(404).json({message: "User doesn't exist"});
 
@@ -30,15 +30,15 @@ export const signin =async(req,res) => {
 }
 
 export const signup =async(req,res) => {
-    const {email, password, confirmPassowrd, firstName, lastName} = req.body;
+    const {email, password, confirmPassword, firstName, lastName} = req.body;
 
     try {
         //cant create account if theres an existing user
-        const existingUser = await user.findOne({email});
+        const existingUser = await User.findOne({email});
 
         if(existingUser) return res.status(404).json({message: "User already exist"});
 
-        if(password !== confirmPassowrd) return res.status(404).json({message: "Passwords dont match"});
+        if(password !== confirmPassword) return res.status(404).json({message: "Passwords dont match"});
 
         const hashedPassword = await bcrypt.hash(password, 12);
 
